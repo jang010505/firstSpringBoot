@@ -1,0 +1,24 @@
+{{>layout/header}}
+<div class="container">
+    <h1>글 작성</h1>
+    <form action="create" method="post">
+        <div class="mb-3">
+            <label class="form-label">작성자</label>
+            <input class="form-control" type="text" name="name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">비밀번호</label>
+            <input class="form-control" type="password" name="passwd">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">제목</label>
+            <input class="form-control" type="text" name="title">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">내용</label>
+            <textarea class="form-control" type="text" name="content" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">전송</button>
+    </form>
+</div>
+{{>layout/footer}}
