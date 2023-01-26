@@ -1,7 +1,9 @@
 package com.example.noticeBoard.Controller;
 
+import com.example.noticeBoard.dto.BoardForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class noticeBoardController {
@@ -14,6 +16,12 @@ public class noticeBoardController {
     @GetMapping("show")
     public String show() { return "board/show"; }
 
-    @GetMapping("create")
-    public String create() {return "board/create"; }
+    @GetMapping("new")
+    public String newForm() {return "board/new"; }
+
+    @PostMapping("create")
+    public String create(BoardForm form) {
+        System.out.println(form.toString());
+        return null;
+    }
 }
