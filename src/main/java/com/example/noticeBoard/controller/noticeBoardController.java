@@ -47,7 +47,7 @@ public class noticeBoardController {
         Board saved = boardRepository.save(board);
         log.info(saved.toString());
 
-        return "redirect:main";
+        return "redirect:/board/"+saved.getId();
     }
 
     @GetMapping("board/{id}")
