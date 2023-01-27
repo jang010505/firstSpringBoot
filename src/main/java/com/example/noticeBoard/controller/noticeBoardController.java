@@ -1,4 +1,4 @@
-package com.example.noticeBoard.Controller;
+package com.example.noticeBoard.controller;
 
 import com.example.noticeBoard.dto.BoardForm;
 import com.example.noticeBoard.entity.Board;
