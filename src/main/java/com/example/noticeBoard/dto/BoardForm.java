@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 public class BoardForm {
 
+    private final Long id;
     private final String name;
     private final String passwd;
     private final String title;
@@ -16,6 +17,6 @@ public class BoardForm {
 
 
     public Board toEntity() {
-        return new Board(null, name, passwd, title, content);
+        return new Board(id, name, passwd, title, content);
     }
 }
