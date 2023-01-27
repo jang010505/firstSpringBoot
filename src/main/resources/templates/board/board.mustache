@@ -1,0 +1,11 @@
+{{>layout/header}}
+<div class="container">
+    {{#board}}
+        <div>글번호 : {{id}}</div>
+        <div>작성자 : {{name}}</div>
+        <div>제목 : {{title}}</div>
+        <div>내용 : {{content}}</div>
+
+    {{/board}}
+</div>
+{{>layout/footer}}
