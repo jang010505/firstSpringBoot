@@ -1,0 +1,23 @@
+{{>layout/header}}
+<div class="container">
+    <h1>글 수정</h1>
+    <form action="/update" method="post">
+        <input class="form-control" type="hidden" name="id" value="{{board.id}}">
+        <input class="form-control" type="hidden" name="name" value="{{board.name}}">
+        <div class="mb-3">
+            <label class="form-label">비밀번호</label>
+            <input class="form-control" type="password" name="passwd">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">제목</label>
+            <input class="form-control" type="text" name="title" value="{{board.title}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">내용</label>
+            <textarea class="form-control" type="text" name="content" rows="3">{{board.content}}</textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">전송</button>
+        <a class="btn btn-primary" href="/board/{{board.id}}">돌아가기</a>
+    </form>
+</div>
+{{>layout/footer}}

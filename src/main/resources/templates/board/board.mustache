@@ -6,7 +6,9 @@
         <div>제목 : {{title}}</div>
         <div>내용 : {{content}}</div>
 
-    {{/board}}
     <a class="btn btn-primary" href="/show">목록으로</a>
+    <a class="btn btn-primary" href="/update/{{id}}">수정</a>
+    <a class="btn btn-danger" href="/delete/{{id}}">삭제</a>
+    {{/board}}
 </div>
 {{>layout/footer}}

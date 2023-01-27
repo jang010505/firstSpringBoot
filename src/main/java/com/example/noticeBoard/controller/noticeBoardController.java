@@ -4,6 +4,7 @@ import com.example.noticeBoard.dto.BoardForm;
 import com.example.noticeBoard.entity.Board;
 import com.example.noticeBoard.repository.BoardRepository;
 import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.implementation.bytecode.assign.primitive.VoidAwareAssigner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Controller
 @Slf4j
@@ -58,5 +60,31 @@ public class noticeBoardController {
         model.addAttribute("board", board);
 
         return "board/board";
+    }
+
+    @GetMapping("update/{id}")
+    public String update(@PathVariable Long id, Model model){
+        log.info("id = " + id);
+        Board board = boardRepository.findById(id).orElse(null);
+
+        model.addAttribute("board", board);
+
+        return "board/update";
+    }
+
+    @PostMapping("update")
+    public String updateBoard(BoardForm form){
+        log.info(form.toString());
+
+        Board board = form.toEntity();
+        log.info(board.toString());
+
+        Board target = boardRepository.findById(board.getId()).orElse(null);
+
+        if(target != null && Objects.equals(target.getPasswd(), board.getPasswd())){
+            boardRepository.save(board);
+        }
+
+        return "redirect:/board/" + board.getId();
     }
 }
