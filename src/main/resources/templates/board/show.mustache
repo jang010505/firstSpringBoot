@@ -7,14 +7,18 @@
                 <th scope="col">글 번호</th>
                 <th scope="col">작성자</th>
                 <th scope="col">제목</th>
+                <th scope="col">수정</th>
+                <th scope="col">삭제</th>
             </tr>
         </thead>
         <tbody>
             {{#boardList}}
                 <tr>
                     <th>{{id}}</th>
-                    <th>{{name}}</th>
+                    <th><a href="board/{{id}}">{{name}}</a></th>
                     <th>{{title}}</th>
+                    <th><a class="btn btn-primary" href="update/{{id}}">수정</a></th>
+                    <th><a class="btn btn-danger" href="delete/{{id}}">수정</a></th>
                 </tr>
             {{/boardList}}
         </tbody>

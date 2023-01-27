@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -47,5 +48,15 @@ public class noticeBoardController {
         log.info(saved.toString());
 
         return "redirect:main";
+    }
+
+    @GetMapping("board/{id}")
+    public String boardShow(@PathVariable Long id, Model model){
+        log.info("id = " + id);
+        Board board = boardRepository.findById(id).orElse(null);
+
+        model.addAttribute("board", board);
+
+        return "board/board";
     }
 }
