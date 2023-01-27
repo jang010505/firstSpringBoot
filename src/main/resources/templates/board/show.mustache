@@ -1,5 +1,23 @@
 {{>layout/header}}
 <div class="container">
     <h1>글 목록</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">글 번호</th>
+                <th scope="col">작성자</th>
+                <th scope="col">제목</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#boardList}}
+                <tr>
+                    <th>{{id}}</th>
+                    <th>{{name}}</th>
+                    <th>{{title}}</th>
+                </tr>
+            {{/boardList}}
+        </tbody>
+    </table>
 </div>
 {{>layout/footer}}
