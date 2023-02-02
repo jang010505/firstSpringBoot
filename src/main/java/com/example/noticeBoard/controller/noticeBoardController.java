@@ -87,4 +87,30 @@ public class noticeBoardController {
 
         return "redirect:/board/" + board.getId();
     }
+
+    @GetMapping("delete/{id}")
+    public String delete(@PathVariable Long id, Model model){
+        log.info("id = " + id);
+        Board board = boardRepository.findById(id).orElse(null);
+
+        model.addAttribute("board", board);
+
+        return "board/delete";
+    }
+
+    @PostMapping("delete")
+    public String deleteBoard(BoardForm form){
+        log.info(form.toString());
+
+        Board board = form.toEntity();
+        log.info(board.toString());
+
+        Board target = boardRepository.findById(board.getId()).orElse(null);
+
+        if(target != null && Objects.equals(target.getPasswd(), board.getPasswd())){
+            boardRepository.delete(board);
+        }
+
+        return "redirect:/show";
+    }
 }
